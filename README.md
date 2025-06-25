@@ -74,7 +74,7 @@ source venv/bin/activate  # Linux/macOS
 
 # Install dependencies
 pip install -r requirements.txt
-
+```
 
 ---
 
