@@ -1,244 +1,189 @@
-[![CPZ Lab](https://drive.google.com/uc?id=1CqcRie0ztUhrCnmv5cqfNHgM3FIK4sFE)](https://ai.cpz-lab.com/)
+[![CPZ Lab](https://drive.google.com/uc?id=1CqcRie0ztUhrCnmv5cqfNHgM3FIK4sFE)](https://ai.cpz-lab.com/)
 
-# COCA COLA PRICE
+# COCA COLA PRICE — Factor‑Based Trading Strategy
 
-## Factor_based Trading Strategy
+[![GitHub Stars](https://img.shields.io/github/stars/chris-cpz/strategy-coca-cola-price?style=flat-square)](https://github.com/chris-cpz/strategy-coca-cola-price)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-blue.svg?style=flat-square\&logo=python)](https://www.python.org/downloads/)
+![Status](https://img.shields.io/badge/status-development-orange?style=flat-square)
 
-[![GitHub Stars](https://img.shields.io/github/stars/chris-cpz/strategy-coca-cola-price?style=for-the-badge&logo=github)](https://github.com/chris-cpz/strategy-coca-cola-price)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg?style=for-the-badge&logo=python)](https://www.python.org/downloads/)
-
-**Description**: coca cola price
-
-**Strategy Type**: Factor_based | **Implementation Date**: 6/25/2025 | **Status**: Development
+> **Description :** Systematic, multi‑factor strategy trading The Coca‑Cola Company (KO) equity using empirically validated return anomalies.
 
 ---
 
-## Overview
+## Table of Contents
 
-This repository contains a factor_based trading strategy implementation based on quantitative analysis and systematic market research. The strategy is designed to identify and exploit market inefficiencies while maintaining robust risk management protocols.
-
-### Key Features
-
-- Quantitative signal generation using mathematical models
-- Risk-adjusted portfolio construction with dynamic position sizing
-- Real-time execution framework with transaction cost optimization
-- Comprehensive performance analytics and reporting
-- Multi-layered risk controls and position limits
-- Extensive backtesting with statistical validation
-
-### Target Performance Metrics
-
-| Metric | Target |
-|--------|--------|
-| Sharpe Ratio | > 1.5 |
-| Maximum Drawdown | < 15% |
-| Volatility Target | 12-18% annualized |
-| Rebalancing | Daily/Weekly |
-| Minimum Capital | $100,000+ |
+1. [Quick Synopsis](#1-quick-synopsis)
+2. [Repository Map](#2-repository-map)
+3. [Getting Started](#3-getting-started)
+4. [Research Rationale](#4-research-rationale)
+5. [Back‑Testing & Validation](#5-back-testing--validation)
+6. [Risk Management](#6-risk-management)
+7. [Technology Stack](#7-technology-stack)
+8. [Monitoring & Governance](#8-monitoring--governance)
+9. [Change Log](#9-change-log)
+10. [Contributing](#10-contributing)
+11. [License](#11-license)
+12. [Disclaimer](#12-disclaimer)
 
 ---
 
+## 1. Quick Synopsis
 
-## Research Hypothesis
-
-**Primary Hypothesis (H₁)**: The factor_based trading approach will generate risk-adjusted returns superior to passive market exposure.
-
----
-
-
-## Theoretical Framework
-
-### Market Efficiency & Behavioral Finance Foundation
-The strategy exploits systematic deviations from market efficiency.
+| Item                    | Detail                                                |
+| ----------------------- | ----------------------------------------------------- |
+| **Strategy Type**       | Multi‑factor (value, momentum, quality) equity timing |
+| **Implementation Date** | 2025‑06‑25                                            |
+| **Universe**            | KO (primary) + SPY & QQQ for regime context           |
+| **Objective**           | Sharpe > 1.5 and max drawdown < 15 % vs buy‑and‑hold  |
 
 ---
 
+## 2. Repository Map
 
-## Research Methodology
-
-### Phase I: Strategy Development Framework
-Comprehensive hypothesis formation and testing protocol.
+```
+.
+├── data/               # Raw & processed market data
+├── strategy/           # Core logic (signals, portfolio, execution)
+├── notebooks/          # Research & exploratory analysis
+├── reports/            # Auto‑generated performance reports
+├── tests/              # Unit / integration tests
+└── requirements.txt
+```
 
 ---
 
-## Implementation
+## 3. Getting Started
 
-### Prerequisites
+### 3.1 Environment
 
-- Python 3.8+
-- 16GB+ RAM recommended
-- Stable internet connection for data feeds
+| Component | Recommended             |
+| --------- | ----------------------- |
+| Python    | 3.8 or newer            |
+| RAM       | ≥ 16 GB                 |
+| OS        | macOS / Linux / Windows |
 
-### Installation
+### 3.2 Installation
 
 ```bash
-# Clone repository
 git clone https://github.com/chris-cpz/strategy-coca-cola-price.git
 cd strategy-coca-cola-price
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Linux/macOS
-# venv\Scripts\activate  # Windows
-
-# Install dependencies
+python -m venv venv && source venv/bin/activate   # Windows → venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### Configuration
+### 3.3 Configuration
 
-Create a `.env` file with your API keys:
+Create a `.env` file in the project root:
 
-```bash
-# Required API Keys
-ALPHA_VANTAGE_API_KEY=your_key_here
-IEX_CLOUD_API_KEY=your_key_here
-QUANDL_API_KEY=your_key_here
+```env
+ALPHA_VANTAGE_API_KEY=...
+IEX_CLOUD_API_KEY=...
+QUANDL_API_KEY=...
 ```
 
-### Quick Start
+### 3.4 Run a Back‑Test
 
 ```python
-from strategy import cocacolapriceStrategy
+from strategy import CocaColaPriceStrategy
 
-# Initialize strategy
-strategy = cocacolapriceStrategy()
-
-# Load data and run backtest
-data = strategy.load_data(['SPY', 'QQQ'], '2020-01-01', '2023-12-31')
-results = strategy.backtest(data)
-strategy.generate_report(results)
+strat   = CocaColaPriceStrategy()
+data    = strat.load_data(['KO', 'SPY', 'QQQ'], '2010-01-01', '2025-06-01')
+results = strat.backtest(data)
+strat.generate_report(results)  # HTML under reports/
 ```
 
 ---
 
-## Backtesting Framework
+## 4. Research Rationale
 
-### Validation Process
-
-- **Historical Analysis**: 10+ years of market data
-- **Walk-Forward Testing**: 12-month optimization with 6-month validation
-- **Monte Carlo Simulation**: 10,000+ scenarios for statistical significance
-- **Stress Testing**: Performance during market crashes and volatility spikes
-
-### Transaction Cost Modeling
-
-- Realistic bid-ask spreads and market impact
-- Dynamic slippage based on order size and liquidity
-- Optimal execution strategies (TWAP, VWAP)
+1. **Factor Premia** – Value, momentum & quality factors exhibit persistent excess returns (Fama‑French 2012; Asness et al. 2013).
+2. **Behavioural Biases** – Investor over‑/under‑reaction drives mean‑reversion and trend following (Jegadeesh & Titman 1993).
+3. **Single‑Name Focus** – Narrow universe enables micro‑structure edge and minimal data latency.
 
 ---
 
+## 5. Back‑Testing & Validation
 
-## Risk Assessment & Critical Limitations
+| Stage                 | Settings                                      |
+| --------------------- | --------------------------------------------- |
+| Historical Simulation | Daily bars 2005‑2025                          |
+| Walk‑Forward          | 12 m optimisation / 6 m hold‑out              |
+| Monte‑Carlo           | 10 000 paths, stationary bootstrap            |
+| Stress Tests          | 2008 GFC, 2020 COVID‑19, 2022 inflation shock |
+| Transaction Costs     | Bid‑ask, slippage, IBKR commissions           |
 
-### **MODEL RISK** 🔴
-Overfitting and parameter instability concerns.
+**Target Metrics**
 
----
-
-
-## Performance Monitoring Framework
-
-| **Metric** | **Target** | **Calculation** |
-|------------|-----------|----------------|
-| **Sharpe Ratio** | > 1.0 | Risk-adjusted returns |
-
----
-
-
-## Data Infrastructure Requirements
-
-| **Data Category** | **Frequency** | **Provider** |
-|-------------------|---------------|-------------|
-| **Market Data** | Real-time/Daily | Multiple vendors |
+| Metric            | Goal         |
+| ----------------- | ------------ |
+| Annualised Sharpe | > 1.5        |
+| Max Drawdown      | < 15 %       |
+| Volatility        | 12–18 % p.a. |
+| Turnover          | < 150 % p.a. |
 
 ---
 
-## Technical Architecture
+## 6. Risk Management
 
-### System Components
-
-```
-Data Layer → Signal Generation → Portfolio Construction → Execution
-    ↓              ↓                    ↓               ↓
-Market Data    Feature Eng.      Risk Management   Order Management
-Alt Data       ML Models         Position Sizing   Performance Tracking
-Fundamentals   Signal Combine    Regime Detection  Reporting
-```
-
-### Technology Stack
-
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| Data Processing | pandas, numpy | High-performance data manipulation |
-| Machine Learning | scikit-learn | Advanced signal generation |
-| Backtesting | zipline, pyfolio | Institutional backtesting |
-| Execution | Interactive Brokers API | Real-time trading |
-| Visualization | plotly, matplotlib | Performance reporting |
+* **Position Sizing** – Volatility‑scaled, max 5 % capital per leg
+* **Stop‑Loss** – 5 % trailing on open P\&L
+* **Exposure Limits** – Sector ≤ 25 %, beta‑adjusted gross < 120 %
+* **Model Risk** – Parameter stability checks & break‑point detection
+* **Operational Risk** – Heart‑beat watchdog & order acknowledgment checks
 
 ---
 
-## Risk Management
+## 7. Technology Stack
 
-### Risk Controls
-
-- Position size limits (5% maximum per position)
-- Stop-loss mechanisms (5% default)
-- Volatility targeting
-- Drawdown limits
-- Sector concentration limits
-
-### Performance Monitoring
-
-- Real-time P&L tracking
-- Risk metric calculations
-- Performance attribution
-- Automated alerts for limit breaches
+| Layer        | Tools                                         |
+| ------------ | --------------------------------------------- |
+| Data Ingest  | `pandas`, `yfinance`, custom adapters         |
+| Alpha Engine | `numpy`, `scikit‑learn`                       |
+| Back‑Test    | `zipline‑reloaded`, `pyfolio`                 |
+| Execution    | Interactive Brokers API (`ib‑insync`)         |
+| Reporting    | `plotly`, `matplotlib`, Jinja2 HTML templates |
+| CI/CD        | `pytest`, GitHub Actions                      |
 
 ---
 
-## Academic References
+## 8. Monitoring & Governance
 
-1. **Jegadeesh, N., & Titman, S. (1993)**. "Returns to Buying Winners and Selling Losers." Journal of Finance, 48(1), 65-91.
-2. **Fama, E. F., & French, K. R. (2012)**. "Size, value, and momentum in international stock returns." Journal of Financial Economics, 105(3), 457-472.
-3. **Asness, C. S., Moskowitz, T. J., & Pedersen, L. H. (2013)**. "Value and momentum everywhere." Journal of Finance, 68(3), 929-985.
+| Frequency   | Checks                                                   |
+| ----------- | -------------------------------------------------------- |
+| **Daily**   | Data integrity, signal sanity, order fill reconciliation |
+| **Monthly** | Performance vs benchmark, risk metrics, drift detection  |
+| **Annual**  | Model refit, parameter review, documentation audit       |
 
----
-
-## Legal Disclaimer
-
-**IMPORTANT**: This software is for educational and research purposes only. Past performance does not guarantee future results. Trading involves substantial risk of loss and is not suitable for all investors.
-
-### Risk Warnings
-
-- You may lose some or all of your invested capital
-- Quantitative models may fail during market stress
-- Execution timing and slippage may impact returns
-- Regulatory requirements may affect implementation
-- No guarantee of profitability or risk control
+Exception handling follows a three‑tier escalation policy (automated alert → manual review → trading halt).
 
 ---
 
-## Contributing
+## 9. Change Log
 
-Contributions are welcome! Please read our contributing guidelines and submit pull requests for any improvements.
-
-## Support
-
-- **Documentation**: [Wiki](https://github.com/chris-cpz/strategy-coca-cola-price/wiki)
-- **Issues**: [GitHub Issues](https://github.com/chris-cpz/strategy-coca-cola-price/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/chris-cpz/strategy-coca-cola-price/discussions)
+| Version | Date       | Notes                                |
+| ------- | ---------- | ------------------------------------ |
+| 1.0.0   | 2025‑06‑25 | Initial public release               |
+| 1.1.0   | 2025‑06‑29 | README overhaul & governance section |
 
 ---
 
-## License
+## 10. Contributing
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Pull requests are welcome — please review `CONTRIBUTING.md` and open an issue before major changes.
 
 ---
 
-*Built with precision for quantitative trading research*
+## 11. License
 
-*Last Updated: 6/25/2025 | Version: 1.0.0*
+Distributed under the MIT License. See `LICENSE` for full text.
+
+---
+
+## 12. Disclaimer
+
+*For educational and research purposes only.* Nothing herein constitutes investment advice. Trading involves risk of loss.
+
+---
+
+<p align="center"><sub>Built with ❤️ by CPZ Lab  •  Last updated 2025‑06‑29</sub></p>
