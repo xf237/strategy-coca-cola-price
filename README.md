@@ -1,3 +1,5 @@
+[![CPZ Lab](https://ai.cpz-lab.com/)
+
 # COCA COLA PRICE
 
 ## Factor_based Trading Strategy
