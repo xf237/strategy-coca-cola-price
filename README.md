@@ -11,23 +11,6 @@
 
 ---
 
-## Table of Contents
-
-1. [Quick Synopsis](#1-quick-synopsis)
-2. [Repository Map](#2-repository-map)
-3. [Getting Started](#3-getting-started)
-4. [Research Rationale](#4-research-rationale)
-5. [Back‑Testing & Validation](#5-back-testing--validation)
-6. [Risk Management](#6-risk-management)
-7. [Technology Stack](#7-technology-stack)
-8. [Monitoring & Governance](#8-monitoring--governance)
-9. [Change Log](#9-change-log)
-10. [Contributing](#10-contributing)
-11. [License](#11-license)
-12. [Disclaimer](#12-disclaimer)
-
----
-
 ## 1. Quick Synopsis
 
 | Item                    | Detail                                                |
@@ -164,7 +147,7 @@ Exception handling follows a three‑tier escalation policy (automated alert �
 | Version | Date       | Notes                                |
 | ------- | ---------- | ------------------------------------ |
 | 1.0.0   | 2025‑06‑25 | Initial public release               |
-| 1.1.0   | 2025‑06‑29 | README overhaul & governance section |
+| 1.1.0   | 2025‑06‑29 | Second Draft Update |
 
 ---
 
