@@ -1,4 +1,4 @@
-[![CPZ Lab](https://ai.cpz-lab.com/)
+[![CPZ Lab](https://drive.google.com/uc?id=1CqcRie0ztUhrCnmv5cqfNHgM3FIK4sFE)](https://ai.cpz-lab.com/)
 
 # COCA COLA PRICE
 
