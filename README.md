@@ -22,23 +22,9 @@
 
 ---
 
-## 2. Repository Map
+## 2. Getting Started
 
-```
-.
-├── data/               # Raw & processed market data
-├── strategy/           # Core logic (signals, portfolio, execution)
-├── notebooks/          # Research & exploratory analysis
-├── reports/            # Auto‑generated performance reports
-├── tests/              # Unit / integration tests
-└── requirements.txt
-```
-
----
-
-## 3. Getting Started
-
-### 3.1 Environment
+### 2.1 Environment
 
 | Component | Recommended             |
 | --------- | ----------------------- |
@@ -46,7 +32,7 @@
 | RAM       | ≥ 16 GB                 |
 | OS        | macOS / Linux / Windows |
 
-### 3.2 Installation
+### 2.2 Installation
 
 ```bash
 git clone https://github.com/chris-cpz/strategy-coca-cola-price.git
@@ -55,7 +41,7 @@ python -m venv venv && source venv/bin/activate   # Windows → venv\Scripts\a
 pip install -r requirements.txt
 ```
 
-### 3.3 Configuration
+### 2.3 Configuration
 
 Create a `.env` file in the project root:
 
@@ -65,7 +51,7 @@ IEX_CLOUD_API_KEY=...
 QUANDL_API_KEY=...
 ```
 
-### 3.4 Run a Back‑Test
+### 2.4 Run a Back‑Test
 
 ```python
 from strategy import CocaColaPriceStrategy
@@ -78,7 +64,7 @@ strat.generate_report(results)  # HTML under reports/
 
 ---
 
-## 4. Research Rationale
+## 3. Research Rationale
 
 1. **Factor Premia** – Value, momentum & quality factors exhibit persistent excess returns (Fama‑French 2012; Asness et al. 2013).
 2. **Behavioural Biases** – Investor over‑/under‑reaction drives mean‑reversion and trend following (Jegadeesh & Titman 1993).
@@ -86,7 +72,7 @@ strat.generate_report(results)  # HTML under reports/
 
 ---
 
-## 5. Back‑Testing & Validation
+## 4. Back‑Testing & Validation
 
 | Stage                 | Settings                                      |
 | --------------------- | --------------------------------------------- |
@@ -107,7 +93,7 @@ strat.generate_report(results)  # HTML under reports/
 
 ---
 
-## 6. Risk Management
+## 5. Risk Management
 
 * **Position Sizing** – Volatility‑scaled, max 5 % capital per leg
 * **Stop‑Loss** – 5 % trailing on open P\&L
@@ -117,7 +103,7 @@ strat.generate_report(results)  # HTML under reports/
 
 ---
 
-## 7. Technology Stack
+## 6. Technology Stack
 
 | Layer        | Tools                                         |
 | ------------ | --------------------------------------------- |
@@ -130,7 +116,7 @@ strat.generate_report(results)  # HTML under reports/
 
 ---
 
-## 8. Monitoring & Governance
+## 7. Monitoring & Governance
 
 | Frequency   | Checks                                                   |
 | ----------- | -------------------------------------------------------- |
@@ -142,7 +128,7 @@ Exception handling follows a three‑tier escalation policy (automated alert �
 
 ---
 
-## 9. Change Log
+## 8. Change Log
 
 | Version | Date       | Notes                                |
 | ------- | ---------- | ------------------------------------ |
@@ -151,7 +137,7 @@ Exception handling follows a three‑tier escalation policy (automated alert �
 
 ---
 
-## 10. Contributing
+## 9. Contributing
 
 Pull requests are welcome — please review `CONTRIBUTING.md` and open an issue before major changes.
 
@@ -159,7 +145,7 @@ Pull requests are welcome — please review `CONTRIBUTING.md` and open an issu
 
 ## 11. License
 
-Distributed under the MIT License. See `LICENSE` for full text.
+This project is licensed under the MIT License - See `LICENSE` for full text.
 
 ---
 
